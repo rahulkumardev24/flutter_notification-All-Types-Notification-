@@ -18,8 +18,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Notification Screen'),
+
             ElevatedButton(
               onPressed: () {
                 NotificationService.showNotification(

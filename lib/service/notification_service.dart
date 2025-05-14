@@ -3,11 +3,11 @@ import 'package:permission_handler/permission_handler.dart';
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
 
   static Future<void> initialize() async {
     const AndroidInitializationSettings androidSettings =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     const InitializationSettings settings = InitializationSettings(
       android: androidSettings,
@@ -25,23 +25,20 @@ class NotificationService {
     required String title,
     required String body,
   }) async {
-    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-      'channel_id_1',
-      'Default Channel',
-      channelDescription: 'Used for basic notifications',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+          'channel_id_1',
+          'Default Channel',
+          channelDescription: 'Used for basic notifications',
+          importance: Importance.max,
+          priority: Priority.high,
+          largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+        );
 
     const NotificationDetails notificationDetails = NotificationDetails(
       android: androidDetails,
     );
 
-    await _notificationsPlugin.show(
-      0,
-      title,
-      body,
-      notificationDetails,
-    );
+    await _notificationsPlugin.show(0, title, body, notificationDetails);
   }
 }
