@@ -11,16 +11,19 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   @override
+  void initState() {
+    super.initState();
+    NotificationService.initialize();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Notification Screen'),
-      ),
+      appBar: AppBar(title: Text('Notification Screen')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             ElevatedButton(
               onPressed: () {
                 NotificationService.showNotification(
@@ -29,6 +32,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 );
               },
               child: Text('Show Notification'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final scheduledTime = DateTime.now().add(Duration(seconds: 10));
+                await NotificationService.scheduleNotification(
+                  title: 'Scheduled Notification',
+                  body: 'This was scheduled 10 seconds ago',
+                  scheduledDateTime: scheduledTime,
+                );
+              },
+              child: Text("Schedule Notification (after 10 sec)"),
             ),
           ],
         ),

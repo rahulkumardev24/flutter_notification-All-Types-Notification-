@@ -34,9 +34,25 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+
+  # Official Flutter notifications package - handles displaying and scheduling notifications
+  # Docs: https://pub.dev/packages/flutter_local_notifications
   flutter_local_notifications: ^19.2.0
+
+  # Timezone support - required for scheduling notifications at specific times
   timezone: ^0.10.1
+
+  # Permission management - requests notification and exact alarm permissions
   permission_handler: ^12.0.0+1
+
+  # Android-specific - opens system settings for exact alarm permission
+  android_intent_plus: ^5.3.0
+
+  # Device information - checks Android version for permission requirements
+  device_info_plus: ^11.4.0
+
+  # Local storage - remembers if app was launched before
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
